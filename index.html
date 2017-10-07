@@ -29,44 +29,52 @@
       </h1>
 
       <!-- Project One -->
-      <div class="row">
-        <div class="col-md-5">
-          <h3>Select Server Architecture</h3>
-          {{#arch}}
-          <div class="radio-inline">
-              <label><input type="radio" name="optradio">{{name}}</label>
+      <form action="config" method="post">
+          <div class="row">
+            <div class="col-md-5">
+              <h3>Select Server Architecture:</h3>
+              {{#arch}}
+              <div class="radio-inline">
+                  <label><input type="radio" value="{{name}}" name="arch">{{name}}</label>
+              </div>
+              {{/arch}}
+            </div>
           </div>
-          {{/arch}}
+          <!-- /.row -->
+
+          <hr>
+
+          <!-- Project Two -->
+          <div class="row">
+            <div class="col-md-5">
+              <h3>Select Web Template:</h3>
+              {{#bootstrap_template}}
+              <div class="radio-inline">
+                  <label><input type="radio" value="{{name}}" name="template">{{name}}</label>
+              </div>
+              {{/bootstrap_template}}
+            </div>
+          </div>
+          <!-- /.row -->
+
+          <hr>
+
+          <!-- Project Three -->
+          <div class="row">
+            <div class="col-md-5">
+              <h3>Enter Domain Name:</h3>
+              <input type="text" class="form-control" name="domain-name" id="domain-name">
+            </div>
+          </div>
+          <!-- /.row -->
+
+          <hr>
+          <input type="submit" class="btn btn-primary" value="Configure Server">
+
         </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
-
-      <!-- Project Two -->
-      <div class="row">
-        <div class="col-md-5">
-          <h3>Select Web Template</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
-
-      <!-- Project Three -->
-      <div class="row">
-        <div class="col-md-5">
-          <h3>Project Three</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
-
-    </div>
     <!-- /.container -->
+
+    </form>
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
