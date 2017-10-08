@@ -22,7 +22,8 @@
     "express": "^4.16.1",
     "jquery": "^3.2.1",
     "jsdom": "^11.3.0",
-    "mustache": "^2.3.0"
+    "mustache": "^2.3.0",
+    "terminate": "^2.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"

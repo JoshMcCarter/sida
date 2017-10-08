@@ -13,12 +13,20 @@ app.use('/bower_components', express.static(__dirname + '/bower_components'))
 
 function configurePage(req, res, next) {
     console.log(req.body);
-    // call the setup bash script here
-    var runConfig = exec('sh test_bash.sh');
-    runConfig.stdout.on('data', function(data) {
-        console.log(data);
+    fs.writeFile('settings.json', JSON.stringify(req.body), 'utf8', function(err, data) {
+        if(err) {
+            console.error(err)
+        }
+        else {
+            var runConfig = exec('sh test_startup.sh settings.json');
+            runConfig.stdout.on('data', function(data) {
+                console.log(data);
+            });
+            next();
+        }
+
     });
-    next();
+
 }
 
 //app.use(configurePage);
@@ -29,7 +37,10 @@ app.post('/settings', configurePage, function (req, res) {
 
 app.get('/takedown', function(req, res) {
     console.log('Taking down the page');
-    // call the takedown bash script
+    var runConfig = exec('sh test_takedown.sh');
+    runConfig.stdout.on('data', function(data) {
+        console.log(data);
+    });
     res.redirect('/');
 })
 
@@ -42,7 +53,7 @@ app.get('/', function(req, res) {
 });
 
 app.listen(8000, function() {
-    console.log('Listening on port 8000');
+    console.log('Startup listening on port 8000');
 });
 
 test_data = {
