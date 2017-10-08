@@ -4,6 +4,7 @@ var app = express();
 var mustache = require('mustache');
 var path = require('path');
 var bodyParser = require('body-parser');
+var {exec} = require('child_process');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 
@@ -13,12 +14,16 @@ app.use('/bower_components', express.static(__dirname + '/bower_components'))
 function configurePage(req, res, next) {
     console.log(req.body);
     // call the setup bash script here
+    var runConfig = exec('sh test_bash.sh');
+    runConfig.stdout.on('data', function(data) {
+        console.log(data);
+    });
     next();
 }
 
-app.use(configurePage);
+//app.use(configurePage);
 
-app.post('/settings', function (req, res) {
+app.post('/settings', configurePage, function (req, res) {
     res.sendFile(path.join(__dirname + '/settings.html'));
 });
 
