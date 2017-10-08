@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{{title}}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!--<link href="css/1-col-portfolio.css" rel="stylesheet">-->
+
+  </head>
+
+  <body>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading -->
+      <h1 class="my-4">Server Setup
+        <small>Select Your Server Configurations</small>
+      </h1>
+
+      <!-- Project One -->
+      <form action="settings" method="post">
+          <div class="row">
+            <div class="col-md-5">
+              <h3>Select Server Architecture:</h3>
+              {{#arch_types}}
+              <div class="radio-inline">
+                  <label><input type="radio" value="{{name}}" name="arch">{{name}}</label>
+              </div>
+              {{/arch_types}}
+            </div>
+          </div>
+          <!-- /.row -->
+
+          <hr>
+
+          <!-- Project Two -->
+          <div class="row">
+            <div class="col-md-5">
+              <h3>Select Web Template:</h3>
+              {{#bootstraps}}
+              <div class="radio-inline">
+                  <label><input type="radio" value="{{name}}" name="template">{{name}}</label>
+              </div>
+              {{/bootstraps}}
+            </div>
+          </div>
+          <!-- /.row -->
+
+          <hr>
+
+          <!-- Project Three -->
+          <div class="row">
+            <div class="col-md-5">
+              <h3>Enter Domain Name:</h3>
+              <input type="text" class="form-control" name="domain-name" id="domain-name">
+            </div>
+          </div>
+          <!-- /.row -->
+
+          <hr>
+          <input type="submit" class="btn btn-primary" value="Configure Server">
+
+        </div>
+    <!-- /.container -->
+
+    </form>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>

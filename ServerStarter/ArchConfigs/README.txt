@@ -1,0 +1,1 @@
+This directory has configuration files for each architecture template available. Inside each file is a list of the processes required to start a template. The name of the template corresponds to the name of the file for the template.
