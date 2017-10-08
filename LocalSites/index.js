@@ -4,7 +4,8 @@ var app = express();
 var mustache = require('mustache');
 var path = require('path');
 var bodyParser = require('body-parser');
-var {exec} = require('child_process');
+var {exec, execSync} = require('child_process');
+var jsonFile = require('jsonfile');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 
@@ -18,7 +19,7 @@ function configurePage(req, res, next) {
             console.error(err)
         }
         else {
-            var runConfig = exec('sh test_startup.sh settings.json');
+            var runConfig = exec('../ServerStarter/ServerStarter.sh settings.json');
             runConfig.stdout.on('data', function(data) {
                 console.log(data);
             });
@@ -45,10 +46,15 @@ app.get('/takedown', function(req, res) {
 })
 
 app.get('/', function(req, res) {
+
+    var runStartup = execSync('../JSONLoader/JSONLoader.sh');
+
     fs.readFile('index.html', function(err, template) {
         res.set('Content-Type', 'text/html');
         template = template.toString();
-        res.send(mustache.to_html(template, test_data))
+        var obj = jsonFile.readFileSync('options.json');
+
+        res.send(mustache.to_html(template, obj))
     })
 });
 
