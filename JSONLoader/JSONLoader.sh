@@ -1,4 +1,4 @@
-#!/usr/bash
+#!/bin/bash
 
 mean_stack=1
 lamp_stack=1
@@ -28,7 +28,7 @@ standard_stack_check(){
 		bool_arr[iter]=$constant_check
 		iter+=1
 	done
-	
+
 	for j in "${bool_arr[@]}"
 	do
 		if [ $j = 0 ]; then
@@ -40,4 +40,4 @@ standard_stack_check(){
 
 standard_stack_check
 
-python JSONLoader.py $standard_stack $mean_stack $lamp_stack
+python ../JSONLoader/JSONLoader.py $standard_stack $mean_stack $lamp_stack

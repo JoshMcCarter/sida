@@ -1,5 +1,4 @@
 import sys,os,json
-
 # if not os.listdir(CONST_BOOTSTRAP_PATH)[i].endswith(".")
 CONST_BOOTSTRAP_PATH = "../BootstrapUtils/BootstrapTemplates/"
 #CONST_BOOTSTRAP_PATH = "/home/josh/Desktop"
@@ -14,6 +13,6 @@ def main():
 	bootstraps = [{'name':os.listdir(CONST_BOOTSTRAP_PATH)[i]} for i in range(len(os.listdir(CONST_BOOTSTRAP_PATH)))]
 	obj['bootstraps'] = bootstraps
 	json_data = json.dumps(obj)
-	json_file = open("foo.json",'w')
+	json_file = open("options.json",'w')
 	json_file.write(json_data)
 main()
